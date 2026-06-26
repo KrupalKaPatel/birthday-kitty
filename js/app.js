@@ -95,6 +95,6 @@ function typeStory(){
 
 document.getElementById("beginBtn").onclick=()=>{
 
-    alert("✨ Chapter 1 arrives in v0.2");
+    showScene();
 
 };
