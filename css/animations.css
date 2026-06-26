@@ -1,0 +1,560 @@
+/* ==========================================================
+   Project Kitty ❤️
+   Sprint 1 - animations.css
+   ========================================================== */
+
+
+/* ==========================================================
+   Fade In
+========================================================== */
+
+.fade-in{
+
+    animation:fadeIn .8s ease forwards;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+
+/* ==========================================================
+   Fade Out
+========================================================== */
+
+.fade-out{
+
+    animation:fadeOut .6s ease forwards;
+
+}
+
+@keyframes fadeOut{
+
+    from{
+
+        opacity:1;
+
+    }
+
+    to{
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* ==========================================================
+   Slide Up
+========================================================== */
+
+.slide-up{
+
+    animation:slideUp .8s ease forwards;
+
+}
+
+@keyframes slideUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(45px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/* ==========================================================
+   Slide Down
+========================================================== */
+
+.slide-down{
+
+    animation:slideDown .8s ease forwards;
+
+}
+
+@keyframes slideDown{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-45px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/* ==========================================================
+   Zoom In
+========================================================== */
+
+.zoom-in{
+
+    animation:zoomIn .6s ease forwards;
+
+}
+
+@keyframes zoomIn{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.92);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+/* ==========================================================
+   Floating Card
+========================================================== */
+
+.glass-card{
+
+    animation:floatCard 7s ease-in-out infinite;
+
+}
+
+@keyframes floatCard{
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}
+
+
+/* ==========================================================
+   Card Glow
+========================================================== */
+
+.loader-card,
+.scene-card,
+.intro-card{
+
+    animation:cardGlow 5s ease-in-out infinite;
+
+}
+
+@keyframes cardGlow{
+
+    0%{
+
+        box-shadow:0 20px 50px rgba(0,0,0,.45);
+
+    }
+
+    50%{
+
+        box-shadow:0 20px 70px rgba(139,92,246,.30);
+
+    }
+
+    100%{
+
+        box-shadow:0 20px 50px rgba(0,0,0,.45);
+
+    }
+
+}
+
+
+/* ==========================================================
+   Gradient Background
+========================================================== */
+
+.gradient{
+
+    animation:
+
+        gradientMove 18s linear infinite,
+
+        gradientZoom 25s ease-in-out infinite;
+
+}
+
+@keyframes gradientMove{
+
+    0%{
+
+        transform:translate(0,0);
+
+    }
+
+    50%{
+
+        transform:translate(-10%,-6%);
+
+    }
+
+    100%{
+
+        transform:translate(0,0);
+
+    }
+
+}
+
+@keyframes gradientZoom{
+
+    0%{
+
+        scale:1;
+
+    }
+
+    50%{
+
+        scale:1.08;
+
+    }
+
+    100%{
+
+        scale:1;
+
+    }
+
+}
+
+
+/* ==========================================================
+   Stars
+========================================================== */
+
+#stars{
+
+    animation:
+
+        starsMove 90s linear infinite,
+
+        starsBlink 6s ease-in-out infinite;
+
+}
+
+@keyframes starsMove{
+
+    from{
+
+        transform:translateY(0);
+
+    }
+
+    to{
+
+        transform:translateY(-200px);
+
+    }
+
+}
+
+@keyframes starsBlink{
+
+    0%{
+
+        opacity:.10;
+
+    }
+
+    50%{
+
+        opacity:.22;
+
+    }
+
+    100%{
+
+        opacity:.10;
+
+    }
+
+}
+
+
+/* ==========================================================
+   Typing Cursor
+========================================================== */
+
+#typing::after{
+
+    content:"|";
+
+    margin-left:5px;
+
+    animation:cursorBlink .8s infinite;
+
+}
+
+@keyframes cursorBlink{
+
+    0%{
+
+        opacity:1;
+
+    }
+
+    50%{
+
+        opacity:0;
+
+    }
+
+    100%{
+
+        opacity:1;
+
+    }
+
+}
+
+
+/* ==========================================================
+   Button Hover Shine
+========================================================== */
+
+button{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+button::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-40%;
+
+    left:-60px;
+
+    width:24px;
+
+    height:180%;
+
+    background:rgba(255,255,255,.25);
+
+    transform:rotate(25deg);
+
+    transition:.6s;
+
+}
+
+button:hover::after{
+
+    left:130%;
+
+}
+
+
+/* ==========================================================
+   Button Pulse
+========================================================== */
+
+.pulse{
+
+    animation:pulse 2s infinite;
+
+}
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.04);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+/* ==========================================================
+   Heart Beat
+========================================================== */
+
+.heart{
+
+    animation:heartBeat 1.6s ease-in-out infinite;
+
+}
+
+@keyframes heartBeat{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    15%{
+
+        transform:scale(1.15);
+
+    }
+
+    30%{
+
+        transform:scale(1);
+
+    }
+
+    45%{
+
+        transform:scale(1.12);
+
+    }
+
+    60%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+/* ==========================================================
+   Scene Transition
+========================================================== */
+
+.scene-enter{
+
+    animation:sceneEnter .7s ease;
+
+}
+
+@keyframes sceneEnter{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/* ==========================================================
+   Hero Image
+========================================================== */
+
+.scene-image{
+
+    animation:imageReveal .9s ease;
+
+}
+
+@keyframes imageReveal{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.96);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+/* ==========================================================
+   Loader Progress
+========================================================== */
+
+#progress-bar{
+
+    transition:width .45s ease;
+
+}

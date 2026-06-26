@@ -1,100 +1,202 @@
-const years = [
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "Journey Ready ❤️"
+/*
+==========================================================
+Project Kitty ❤️
+Sprint 1 - app.js
+
+Application Bootstrap
+
+Responsibilities
+✔ Loader Animation
+✔ Progress Bar
+✔ Loading Messages
+✔ Intro Screen
+✔ Typing Effect
+✔ Initialize Application
+==========================================================
+*/
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    initializeApplication();
+
+});
+
+/*
+==========================================================
+Loading Messages
+==========================================================
+*/
+
+const loadingMessages = [
+
+    "Collecting Memories...",
+
+    "Finding Beautiful Moments...",
+
+    "Polishing Every Smile...",
+
+    "Wrapping Everything With Love...",
+
+    "Almost Ready..."
+
 ];
 
-const progressBar = document.getElementById("progress-bar");
-const loadingText = document.getElementById("loading-text");
+/*
+==========================================================
+Initialize
+==========================================================
+*/
 
-let index = 0;
+function initializeApplication(){
 
-const loader = setInterval(() => {
+    showLoader();
 
-    progressBar.style.width = `${((index + 1) / years.length) * 100}%`;
-
-    loadingText.innerHTML = years[index];
-
-    index++;
-
-    if (index === years.length) {
-
-        clearInterval(loader);
-
-        setTimeout(showIntro,600);
-
-    }
-
-},450);
-
-function showIntro(){
-
-    document.getElementById("loader").classList.add("hidden");
-
-    document.getElementById("intro").classList.remove("hidden");
-
-    typeStory();
+    startLoader();
 
 }
 
-const lines=[
+/*
+==========================================================
+Loader Animation
+==========================================================
+*/
 
-"Hi Kitty...",
+function startLoader(){
 
-"Before today begins...",
+    const progressBar = document.getElementById("progress-bar");
 
-"I want to take you through our journey ❤️"
+    const loadingText = document.getElementById("loadingText");
 
-];
+    let progress = 0;
 
-let line=0;
+    let messageIndex = 0;
 
-function typeStory(){
+    const timer = setInterval(() => {
 
-    const heading=document.getElementById("typing");
+        progress += 2;
 
-    const subtitle=document.getElementById("subtitle");
+        progressBar.style.width = progress + "%";
 
-    heading.innerHTML="";
+        if(progress % 20 === 0){
 
-    let i=0;
+            loadingText.textContent =
 
-    const typing=setInterval(()=>{
+                loadingMessages[messageIndex];
 
-        heading.innerHTML+=lines[line][i];
+            messageIndex++;
 
-        i++;
+            if(messageIndex >= loadingMessages.length){
 
-        if(i>=lines[line].length){
-
-            clearInterval(typing);
-
-            if(line<2){
-
-                line++;
-
-                setTimeout(typeStory,900);
-
-            }else{
-
-                subtitle.innerHTML="A birthday gift made with ❤️ by Herry";
+                messageIndex = loadingMessages.length - 1;
 
             }
 
         }
 
-    },55);
+        if(progress >= 100){
+
+            clearInterval(timer);
+
+            setTimeout(() => {
+
+                showIntro();
+
+                startTyping();
+
+            },500);
+
+        }
+
+    },50);
 
 }
 
-document.getElementById("beginBtn").onclick=()=>{
+/*
+==========================================================
+Typing Effect
+==========================================================
+*/
 
-    showScene();
+function startTyping(){
 
-};
+    const element = document.getElementById("typing");
+
+    const text = "Hi Kitty... ❤️";
+
+    element.textContent = "";
+
+    let index = 0;
+
+    const timer = setInterval(() => {
+
+        element.textContent += text.charAt(index);
+
+        index++;
+
+        if(index >= text.length){
+
+            clearInterval(timer);
+
+            document
+                .getElementById("beginBtn")
+                .classList
+                .add("pulse");
+
+        }
+
+    },90);
+
+}
+
+/*
+==========================================================
+Restart Journey
+
+Future Feature
+==========================================================
+*/
+
+function restartJourney(){
+
+    Engine.currentScene = 0;
+
+    startJourney();
+
+}
+
+/*
+==========================================================
+Preload Images
+
+Future Feature
+==========================================================
+*/
+
+function preloadImages(){
+
+    SCENES.forEach(scene => {
+
+        if(scene.image){
+
+            preloadImage(scene.image);
+
+        }
+
+    });
+
+}
+
+// Reserved for Sprint 2
+// preloadImages();
+
+/*
+==========================================================
+Application Ready
+==========================================================
+*/
+
+console.log(
+
+    `❤️ ${APP.title} | ${APP.version} Ready`
+
+);

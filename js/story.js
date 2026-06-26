@@ -1,63 +1,41 @@
-const storyData = [
-    {
-        year: "2017",
-        title: "The Beginning",
-        text: "Every beautiful story starts with one unexpected meeting."
-    },
-    {
-        year: "1 April 2018",
-        title: "Forever Begins",
-        text: "The day we got engaged."
-    },
-    {
-        year: "10 December 2018",
-        title: "Our Wedding",
-        text: "The day we became one."
-    }
-];
+/*
+=========================================
+Story Renderer
+=========================================
+*/
 
-let currentScene = 0;
+function renderScene(){
 
-function showScene(){
+    const scene=scenes[currentScene];
 
-    const intro = document.getElementById("intro");
-
-    intro.innerHTML = `
-        <div class="glass scene">
-
-            <span class="year">${storyData[currentScene].year}</span>
-
-            <h1>${storyData[currentScene].title}</h1>
-
-            <p>${storyData[currentScene].text}</p>
-
-            <button id="nextScene">
-
-                Continue ❤️
-
-            </button>
-
-        </div>
-    `;
-
-    document
-        .getElementById("nextScene")
-        .onclick = nextScene;
-
-}
-
-function nextScene(){
-
-    currentScene++;
-
-    if(currentScene >= storyData.length){
-
-        alert("Birthday Timeline coming in v0.3 ❤️");
+    if(!scene){
 
         return;
 
     }
 
-    showScene();
+    document.getElementById("sceneYear").textContent=scene.year;
+
+    document.getElementById("sceneTitle").textContent=scene.title;
+
+    document.getElementById("sceneText").textContent=scene.text;
 
 }
+
+document
+.getElementById("beginBtn")
+.onclick=()=>{
+
+    showStoryScreen();
+
+    renderScene();
+
+};
+
+document
+.getElementById("nextBtn")
+.onclick=()=>{
+
+    nextScene();
+
+};

@@ -1,23 +1,31 @@
-/* =========================================
-   Project Kitty v0.2
-   Author : Herry ❤️
-========================================= */
+/* ==========================================================
+   Project Kitty ❤️
+   Sprint 1 - style.css
+   Author : Herry
+   ========================================================== */
 
 :root{
 
-    --bg-dark:#080B1A;
+    --bg-dark:#070B18;
     --bg-light:#1B1140;
 
-    --primary:#7B4DFF;
+    --primary:#8B5CF6;
     --primary-light:#C084FC;
 
-    --glass:rgba(255,255,255,.08);
-    --glass-border:rgba(255,255,255,.12);
+    --white:#FFFFFF;
+    --text:#ECECEC;
+    --muted:#CFCFCF;
 
-    --white:#ffffff;
-    --text:#EAEAEA;
+    --glass:rgba(255,255,255,.08);
+    --glass-border:rgba(255,255,255,.15);
+
+    --radius:24px;
 
 }
+
+/* ==========================================================
+   Reset
+========================================================== */
 
 *{
 
@@ -45,9 +53,9 @@ body{
 
 }
 
-/* =========================================
+/* ==========================================================
    Background
-========================================= */
+========================================================== */
 
 #background{
 
@@ -57,7 +65,7 @@ body{
 
     overflow:hidden;
 
-    z-index:-2;
+    z-index:-10;
 
 }
 
@@ -65,22 +73,20 @@ body{
 
     position:absolute;
 
-    width:200%;
-    height:200%;
+    width:220%;
+    height:220%;
 
     background:
-        radial-gradient(circle at 20% 20%,#6D3AFF 0%,transparent 45%),
-        radial-gradient(circle at 80% 30%,#4F46E5 0%,transparent 40%),
-        radial-gradient(circle at 50% 80%,#9333EA 0%,transparent 45%),
-        linear-gradient(135deg,#080B1A,#140B32);
 
-    animation:gradientMove 20s linear infinite;
+        radial-gradient(circle at 15% 20%,#7C3AED 0%,transparent 35%),
+
+        radial-gradient(circle at 85% 25%,#4F46E5 0%,transparent 35%),
+
+        radial-gradient(circle at 55% 80%,#9333EA 0%,transparent 40%),
+
+        linear-gradient(135deg,#050816,#160D37);
 
 }
-
-/* =========================================
-   Stars
-========================================= */
 
 #stars{
 
@@ -92,22 +98,19 @@ body{
 
         radial-gradient(white 1px,transparent 1px);
 
-    background-size:70px 70px;
+    background-size:65px 65px;
 
-    opacity:.15;
-
-    animation:starsMove 90s linear infinite;
+    opacity:.12;
 
 }
 
-/* =========================================
-   Sections
-========================================= */
+/* ==========================================================
+   Screen
+========================================================== */
 
 .screen{
 
     width:100vw;
-
     height:100vh;
 
     display:flex;
@@ -116,27 +119,27 @@ body{
 
     align-items:center;
 
-    padding:30px;
+    padding:40px;
 
 }
 
 .hidden{
 
-    display:none;
+    display:none !important;
 
 }
 
-/* =========================================
-   Glass Card
-========================================= */
+/* ==========================================================
+   Cards
+========================================================== */
 
 .glass-card{
 
-    width:min(700px,92vw);
+    width:min(760px,92vw);
 
-    padding:55px;
+    padding:50px;
 
-    border-radius:28px;
+    border-radius:var(--radius);
 
     background:var(--glass);
 
@@ -144,51 +147,51 @@ body{
 
     backdrop-filter:blur(18px);
 
-    text-align:center;
-
     box-shadow:
 
         0 25px 60px rgba(0,0,0,.45);
 
 }
 
-/* =========================================
+/* ==========================================================
    Typography
-========================================= */
+========================================================== */
 
 .small-title{
 
     display:block;
 
-    margin-bottom:20px;
+    margin-bottom:18px;
 
-    color:#E9D5FF;
-
-    letter-spacing:3px;
+    color:#D8B4FE;
 
     font-size:14px;
 
     text-transform:uppercase;
 
+    letter-spacing:3px;
+
 }
 
 h1{
 
-    font-family:"Cormorant Garamond",serif;
+    font-family:'Cormorant Garamond',serif;
 
     font-size:64px;
 
-    line-height:1.15;
+    font-weight:700;
 
     margin-bottom:18px;
+
+    line-height:1.15;
 
 }
 
 h2{
 
-    font-family:"Cormorant Garamond",serif;
+    font-family:'Cormorant Garamond',serif;
 
-    font-size:42px;
+    font-size:40px;
 
     margin-bottom:25px;
 
@@ -198,15 +201,29 @@ p{
 
     color:var(--text);
 
-    line-height:1.8;
-
     font-size:18px;
+
+    line-height:1.8;
 
 }
 
-/* =========================================
+.year{
+
+    display:inline-block;
+
+    margin-bottom:15px;
+
+    color:#D8B4FE;
+
+    font-weight:600;
+
+    letter-spacing:2px;
+
+}
+
+/* ==========================================================
    Loader
-========================================= */
+========================================================== */
 
 .progress{
 
@@ -214,7 +231,7 @@ p{
 
     height:12px;
 
-    margin:30px 0;
+    margin:28px 0;
 
     border-radius:999px;
 
@@ -232,63 +249,103 @@ p{
 
     border-radius:999px;
 
-    background:linear-gradient(
-        90deg,
-        #A855F7,
-        #C084FC
-    );
+    background:
 
-    transition:.45s;
+        linear-gradient(90deg,#8B5CF6,#C084FC);
 
 }
 
-/* =========================================
-   Story Scene
-========================================= */
+/* ==========================================================
+   Scene
+========================================================== */
 
-.year{
+.scene-wrapper{
 
-    display:inline-block;
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:28px;
+
+}
+
+.scene-image{
+
+    width:min(1000px,90vw);
+
+    max-height:55vh;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    box-shadow:
+
+        0 20px 60px rgba(0,0,0,.45);
+
+}
+
+.scene-progress{
+
+    display:flex;
+
+    justify-content:center;
 
     margin-bottom:18px;
 
-    color:#D8B4FE;
+}
 
-    font-weight:600;
+#sceneCounter{
+
+    font-size:14px;
+
+    color:#D8B4FE;
 
     letter-spacing:2px;
 
-    text-transform:uppercase;
-
 }
 
-/* =========================================
-   Buttons
-========================================= */
+.scene-navigation{
 
-button{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
 
     margin-top:35px;
 
+}
+
+/* ==========================================================
+   Buttons
+========================================================== */
+
+button{
+
     border:none;
+
+    cursor:pointer;
 
     border-radius:999px;
 
-    padding:16px 38px;
+    padding:16px 34px;
 
-    font-size:17px;
+    font-size:16px;
 
-    cursor:pointer;
+    font-weight:500;
 
     color:white;
 
     background:
 
-        linear-gradient(
-            135deg,
-            #8B5CF6,
-            #A855F7
-        );
+        linear-gradient(135deg,#8B5CF6,#A855F7);
 
     transition:.35s;
 
@@ -296,84 +353,72 @@ button{
 
 button:hover{
 
-    transform:translateY(-4px);
-
-    box-shadow:
-
-        0 12px 35px rgba(168,85,247,.45);
+    transform:translateY(-3px);
 
 }
 
-/* =========================================
-   Responsive
-========================================= */
+.secondary-btn{
 
-@media(max-width:768px){
+    background:rgba(255,255,255,.08);
 
-    .glass-card{
-
-        padding:35px 25px;
-
-    }
-
-    h1{
-
-        font-size:42px;
-
-    }
-
-    h2{
-
-        font-size:30px;
-
-    }
-
-    p{
-
-        font-size:16px;
-
-    }
+    border:1px solid rgba(255,255,255,.15);
 
 }
 
-/* =========================================
-   Animations
-========================================= */
+/* ==========================================================
+   Heart
+========================================================== */
 
-@keyframes gradientMove{
+.heart{
 
-    0%{
+    font-size:24px;
 
-        transform:translate(0,0);
-
-    }
-
-    50%{
-
-        transform:translate(-15%,-8%);
-
-    }
-
-    100%{
-
-        transform:translate(0,0);
-
-    }
+    user-select:none;
 
 }
 
-@keyframes starsMove{
+/* ==========================================================
+   Footer
+========================================================== */
 
-    from{
+#footer{
 
-        transform:translateY(0);
+    position:fixed;
 
-    }
+    bottom:18px;
 
-    to{
+    width:100%;
 
-        transform:translateY(-200px);
+    text-align:center;
 
-    }
+    font-size:13px;
+
+    color:rgba(255,255,255,.45);
+
+    letter-spacing:1px;
+
+}
+
+/* ==========================================================
+   Scrollbar
+========================================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#8B5CF6;
+
+    border-radius:999px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#0A0E20;
 
 }

@@ -1,0 +1,364 @@
+/* ==========================================================
+   Project Kitty ❤️
+   Sprint 1 - responsive.css
+   Author : Herry
+   ========================================================== */
+
+
+/* ==========================================================
+   Large Desktop (1400px+)
+========================================================== */
+
+@media (min-width:1400px){
+
+    .glass-card{
+
+        max-width:850px;
+
+        padding:60px;
+
+    }
+
+    h1{
+
+        font-size:72px;
+
+    }
+
+    h2{
+
+        font-size:48px;
+
+    }
+
+    p{
+
+        font-size:20px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   Laptop (1024px - 1399px)
+========================================================== */
+
+@media (max-width:1399px){
+
+    .glass-card{
+
+        max-width:760px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   Tablet
+========================================================== */
+
+@media (max-width:992px){
+
+    .screen{
+
+        padding:30px;
+
+    }
+
+    .glass-card{
+
+        padding:40px;
+
+    }
+
+    h1{
+
+        font-size:52px;
+
+    }
+
+    h2{
+
+        font-size:36px;
+
+    }
+
+    p{
+
+        font-size:17px;
+
+    }
+
+    .scene-image{
+
+        max-height:45vh;
+
+    }
+
+}
+
+
+/* ==========================================================
+   Mobile
+========================================================== */
+
+@media (max-width:768px){
+
+    .screen{
+
+        padding:20px;
+
+    }
+
+    .glass-card{
+
+        width:100%;
+
+        padding:28px;
+
+        border-radius:20px;
+
+    }
+
+    h1{
+
+        font-size:40px;
+
+        line-height:1.2;
+
+    }
+
+    h2{
+
+        font-size:30px;
+
+    }
+
+    p{
+
+        font-size:16px;
+
+        line-height:1.7;
+
+    }
+
+    .small-title{
+
+        font-size:12px;
+
+        letter-spacing:2px;
+
+    }
+
+    .scene-image{
+
+        width:100%;
+
+        max-height:35vh;
+
+        border-radius:16px;
+
+    }
+
+    .scene-navigation{
+
+        flex-direction:column;
+
+        gap:18px;
+
+    }
+
+    button{
+
+        width:100%;
+
+    }
+
+    .heart{
+
+        order:-1;
+
+        font-size:28px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   Small Mobile
+========================================================== */
+
+@media (max-width:480px){
+
+    body{
+
+        overflow-x:hidden;
+
+    }
+
+    .screen{
+
+        padding:16px;
+
+    }
+
+    .glass-card{
+
+        padding:22px;
+
+    }
+
+    h1{
+
+        font-size:32px;
+
+    }
+
+    h2{
+
+        font-size:26px;
+
+    }
+
+    p{
+
+        font-size:15px;
+
+    }
+
+    #sceneCounter{
+
+        font-size:12px;
+
+    }
+
+    .year{
+
+        font-size:13px;
+
+    }
+
+    button{
+
+        font-size:15px;
+
+        padding:14px 18px;
+
+    }
+
+    #footer{
+
+        font-size:11px;
+
+        bottom:10px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   Landscape Phones
+========================================================== */
+
+@media (max-height:500px) and (orientation:landscape){
+
+    .screen{
+
+        padding:12px;
+
+    }
+
+    .scene-wrapper{
+
+        gap:15px;
+
+    }
+
+    .scene-image{
+
+        max-height:35vh;
+
+    }
+
+    .glass-card{
+
+        padding:18px 24px;
+
+    }
+
+    h1{
+
+        font-size:30px;
+
+        margin-bottom:10px;
+
+    }
+
+    h2{
+
+        font-size:24px;
+
+        margin-bottom:12px;
+
+    }
+
+    p{
+
+        font-size:14px;
+
+        line-height:1.5;
+
+    }
+
+    .scene-navigation{
+
+        margin-top:18px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   Ultra Small Devices
+========================================================== */
+
+@media (max-width:360px){
+
+    h1{
+
+        font-size:28px;
+
+    }
+
+    h2{
+
+        font-size:22px;
+
+    }
+
+    p{
+
+        font-size:14px;
+
+    }
+
+    .glass-card{
+
+        padding:18px;
+
+    }
+
+    button{
+
+        font-size:14px;
+
+        padding:12px 14px;
+
+    }
+
+}
