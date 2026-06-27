@@ -18,7 +18,7 @@ const Engine = {
 
     currentScene: 0,
 
-    totalScenes: APP.totalScenes
+    totalScenes: CHAPTERS.length
 
 };
 
@@ -100,7 +100,7 @@ Get Current Scene
 
 function getCurrentScene(){
 
-    return SCENES[Engine.currentScene];
+    return CHAPTERS[Engine.currentScene];
 
 }
 
@@ -122,6 +122,24 @@ function renderCurrentScene(){
 
     renderScene(scene);
 
+    document.dispatchEvent(
+
+        new CustomEvent("kitty:scene-change",{
+
+            detail:{
+
+                scene,
+
+                index:Engine.currentScene,
+
+                total:Engine.totalScenes
+
+            }
+
+        })
+
+    );
+
     updateSceneCounter();
 
     updateNavigationButtons();
@@ -137,6 +155,10 @@ Next Scene
 function nextScene(){
 
     if(Engine.currentScene >= Engine.totalScenes - 1){
+
+        Engine.currentScene = 0;
+
+        renderCurrentScene();
 
         return;
 
@@ -222,9 +244,7 @@ function updateNavigationButtons(){
 
     prev.disabled = Engine.currentScene === 0;
 
-    next.disabled =
-
-        Engine.currentScene === Engine.totalScenes - 1;
+    next.disabled = false;
 
 }
 

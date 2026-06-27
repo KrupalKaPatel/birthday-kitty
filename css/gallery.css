@@ -1,0 +1,667 @@
+/*
+==========================================================
+Project Kitty ❤️
+Sprint 2
+
+gallery.css
+
+Gallery Layout
+Photo Cards
+Hover Effects
+Empty Gallery
+==========================================================
+*/
+
+/*=========================================================
+Gallery Container
+=========================================================*/
+
+.gallery{
+
+    margin-top:14px;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+    gap:10px;
+
+    width:100%;
+
+}
+
+/*=========================================================
+Photo Card
+=========================================================*/
+
+.photo-card{
+
+    background:transparent;
+
+    border-radius:14px;
+
+    overflow:hidden;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
+
+    transition:.35s;
+
+    cursor:pointer;
+
+}
+
+.photo-card:hover{
+
+    transform:translateY(-8px) scale(1.02);
+
+    box-shadow:0 18px 40px rgba(0,0,0,.18);
+
+}
+
+/*=========================================================
+Image
+=========================================================*/
+
+.photo-card img{
+
+    width:100%;
+
+    height:auto;
+
+    max-height:none;
+
+    object-fit:contain;
+
+    display:block;
+
+    transition:.4s;
+
+    background:transparent;
+
+}
+
+.photo-card:hover img{
+
+    transform:scale(1.05);
+
+}
+
+/*=========================================================
+Caption
+=========================================================*/
+
+.photo-caption{
+
+    margin-top:6px;
+
+    padding:10px 12px;
+
+    font-family:var(--font-body);
+
+    font-size:12.5px;
+
+    font-weight:500;
+
+    letter-spacing:.2px;
+
+    line-height:1.55;
+
+    text-align:center;
+
+    color:#4F2344;
+
+    background:linear-gradient(145deg,rgba(255,240,245,.96),rgba(255,230,236,.94));
+
+    border:1px solid rgba(244,114,182,.28);
+
+    border-radius:10px;
+
+}
+
+/*=========================================================
+Empty Gallery
+=========================================================*/
+
+.gallery-empty{
+
+    width:100%;
+
+    padding:50px;
+
+    border:2px dashed #d8b4fe;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:18px;
+
+    background:#faf5ff;
+
+}
+
+.gallery-empty p{
+
+    margin-top:15px;
+
+}
+
+.final-gallery-promise{
+
+    border-style:solid;
+
+    border-color:rgba(216,180,254,.52);
+
+    background:linear-gradient(145deg,rgba(250,245,255,.95),rgba(243,232,255,.92));
+
+    color:#4b2a63;
+
+    padding:34px 22px;
+
+}
+
+.promise-icon{
+
+    font-size:28px;
+
+    line-height:1;
+
+    margin-bottom:10px;
+
+}
+
+.promise-title{
+
+    margin:0;
+
+    font-family:var(--font-display);
+
+    font-size:clamp(1.3rem,2.2vw,1.7rem);
+
+    color:#4c1d95;
+
+}
+
+.promise-subtitle{
+
+    margin-top:10px;
+
+    margin-bottom:0;
+
+    font-size:15px;
+
+    line-height:1.65;
+
+    color:#6b2d5c;
+
+}
+
+.final-gallery-finale{
+
+    border-style:solid;
+
+    border-color:rgba(244,114,182,.35);
+
+    background:linear-gradient(145deg,rgba(255,246,238,.95),rgba(255,236,245,.93));
+
+    color:#6b214f;
+
+    padding:34px 22px;
+
+}
+
+.finale-icon{
+
+    font-size:30px;
+
+    line-height:1;
+
+    margin-bottom:10px;
+
+}
+
+.finale-title{
+
+    margin:0;
+
+    font-family:var(--font-display);
+
+    font-size:clamp(1.3rem,2.2vw,1.7rem);
+
+    color:#8b1e4c;
+
+}
+
+.finale-subtitle{
+
+    margin-top:10px;
+
+    margin-bottom:0;
+
+    font-size:15px;
+
+    line-height:1.65;
+
+    color:#7a2848;
+
+}
+
+/*=========================================================
+Lightbox
+=========================================================*/
+
+body.lightbox-open{
+
+    overflow:hidden;
+
+}
+
+.lightbox{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:120;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:18px;
+
+}
+
+.lightbox-backdrop{
+
+    position:absolute;
+
+    inset:0;
+
+    background:radial-gradient(circle at 50% 30%,rgba(48,24,98,.55),rgba(7,9,18,.94));
+
+    backdrop-filter:blur(4px);
+
+}
+
+.lightbox-shell{
+
+    position:relative;
+
+    width:min(1220px,96vw);
+
+    max-height:92vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    padding:14px;
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,255,255,.18);
+
+    background:linear-gradient(145deg,rgba(24,14,52,.92),rgba(11,8,24,.88));
+
+    box-shadow:0 28px 80px rgba(0,0,0,.55);
+
+}
+
+.lightbox-topbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.lightbox-counter{
+
+    color:#E9D5FF;
+
+    font-size:13px;
+
+    letter-spacing:.9px;
+
+}
+
+.lightbox-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.lightbox-action-btn{
+
+    min-width:34px;
+
+    height:34px;
+
+    padding:0 10px;
+
+    border-radius:999px;
+
+    border:1px solid rgba(255,255,255,.25);
+
+    background:rgba(255,255,255,.08);
+
+    color:#F5F3FF;
+
+    font-size:16px;
+
+}
+
+.lightbox-action-btn:hover{
+
+    transform:none;
+
+    background:rgba(255,255,255,.16);
+
+}
+
+.lightbox-zoom-value{
+
+    min-width:48px;
+
+    text-align:center;
+
+    color:#E9D5FF;
+
+    font-size:12px;
+
+}
+
+.lightbox-stage{
+
+    position:relative;
+
+    min-height:320px;
+
+    height:min(64vh,760px);
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:rgba(5,4,14,.75);
+
+}
+
+.lightbox-image{
+
+    width:100%;
+
+    height:100%;
+
+    max-width:100%;
+
+    max-height:100%;
+
+    object-fit:contain;
+
+    transition:transform .28s ease;
+
+    will-change:transform;
+
+}
+
+.lightbox-image-enter{
+
+    animation:lightboxImageIn .36s ease;
+
+}
+
+.lightbox-nav{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:42px;
+
+    height:42px;
+
+    padding:0;
+
+    border-radius:999px;
+
+    font-size:26px;
+
+    line-height:1;
+
+    background:rgba(11,7,25,.62);
+
+    border:1px solid rgba(255,255,255,.24);
+
+    z-index:2;
+
+}
+
+.lightbox-nav-prev{ left:14px; }
+.lightbox-nav-next{ right:14px; }
+
+.lightbox-nav:hover{
+
+    transform:translateY(-50%);
+
+    background:rgba(40,20,86,.78);
+
+}
+
+.lightbox-nav:disabled{
+
+    opacity:.35;
+
+    cursor:default;
+
+}
+
+.lightbox-caption{
+
+    color:#F5F3FF;
+
+    font-size:15px;
+
+    line-height:1.5;
+
+    text-align:center;
+
+    min-height:24px;
+
+}
+
+.lightbox-thumbs{
+
+    display:flex;
+
+    gap:8px;
+
+    overflow-x:auto;
+
+    padding-bottom:3px;
+
+}
+
+.lightbox-thumb{
+
+    flex:0 0 auto;
+
+    width:74px;
+
+    height:56px;
+
+    padding:0;
+
+    border-radius:10px;
+
+    border:1px solid rgba(255,255,255,.22);
+
+    background:rgba(255,255,255,.08);
+
+    overflow:hidden;
+
+}
+
+.lightbox-thumb:hover{
+
+    transform:none;
+
+}
+
+.lightbox-thumb img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.lightbox-thumb.active{
+
+    border-color:#C084FC;
+
+    box-shadow:0 0 0 1px rgba(192,132,252,.45);
+
+}
+
+@keyframes lightboxImageIn{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.97);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+/*=========================================================
+Fade Animation
+=========================================================*/
+
+.photo-card{
+
+    animation:fadeUp .6s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*=========================================================
+Mobile
+=========================================================*/
+
+@media(max-width:768px){
+
+    .gallery{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .lightbox{
+
+        padding:10px;
+
+    }
+
+    .lightbox-shell{
+
+        width:100%;
+
+        max-height:95vh;
+
+        padding:10px;
+
+        gap:10px;
+
+    }
+
+    .lightbox-stage{
+
+        min-height:220px;
+
+        height:52vh;
+
+    }
+
+    .lightbox-nav{
+
+        width:36px;
+
+        height:36px;
+
+        font-size:22px;
+
+    }
+
+    .lightbox-nav-prev{ left:8px; }
+    .lightbox-nav-next{ right:8px; }
+
+    .lightbox-caption{
+
+        font-size:14px;
+
+    }
+
+    .lightbox-thumb{
+
+        width:62px;
+
+        height:48px;
+
+    }
+
+}

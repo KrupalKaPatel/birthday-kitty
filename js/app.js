@@ -17,9 +17,73 @@ Responsibilities
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    applyPerformanceProfile();
+
     initializeApplication();
 
 });
+
+/*
+==========================================================
+Performance Profile
+==========================================================
+*/
+
+function applyPerformanceProfile(){
+
+    const perfOverride = getPerformanceOverride();
+
+    const prefersReducedMotion =
+
+        window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const lowCpu =
+
+        typeof navigator.hardwareConcurrency === "number" &&
+        navigator.hardwareConcurrency > 0 &&
+        navigator.hardwareConcurrency <= 4;
+
+    const lowMemory =
+
+        typeof navigator.deviceMemory === "number" &&
+        navigator.deviceMemory > 0 &&
+        navigator.deviceMemory <= 4;
+
+    const saveData =
+
+        navigator.connection && navigator.connection.saveData === true;
+
+    const shouldUsePerformanceLite =
+
+        prefersReducedMotion || lowCpu || lowMemory || saveData;
+
+    const isLiteMode =
+
+        perfOverride === "lite"
+            ? true
+            : perfOverride === "full"
+                ? false
+                : shouldUsePerformanceLite;
+
+    document.body.classList.toggle("performance-lite",isLiteMode);
+
+}
+
+function getPerformanceOverride(){
+
+    const params = new URLSearchParams(window.location.search);
+
+    const value = (params.get("perf") || "").trim().toLowerCase();
+
+    if(value === "lite" || value === "full"){
+
+        return value;
+
+    }
+
+    return "";
+
+}
 
 /*
 ==========================================================
@@ -174,11 +238,11 @@ Future Feature
 
 function preloadImages(){
 
-    SCENES.forEach(scene => {
+    CHAPTERS.forEach(chapter => {
 
-        if(scene.image){
+        if(chapter.hero){
 
-            preloadImage(scene.image);
+            preloadImage(chapter.hero);
 
         }
 

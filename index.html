@@ -19,7 +19,7 @@
           href="https://fonts.gstatic.com"
           crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
 
     <!-- CSS -->
@@ -32,6 +32,9 @@
 
     <link rel="stylesheet"
           href="css/responsive.css">
+
+    <link rel="stylesheet"
+          href="css/gallery.css">
 
 </head>
 
@@ -119,30 +122,34 @@
          Story
     =========================================== -->
 
-    <section id="story"
-             class="screen hidden">
+<!-- ==========================================
+     Story
+=========================================== -->
 
-        <div class="scene-wrapper">
+<section id="story"
+         class="screen hidden">
 
-            <!-- Hero Image -->
+    <div class="scene-wrapper">
 
-            <img id="sceneImage"
-                 class="scene-image hidden"
-                 alt="Memory">
+        <!-- Hero Image -->
 
-            <!-- Glass Card -->
+        <img id="sceneImage"
+             class="scene-image hidden"
+             alt="Memory">
 
-            <div class="glass-card scene-card">
+        <!-- Story Card -->
 
-                <div class="scene-progress">
+        <div class="glass-card scene-card">
 
-                    <span id="sceneCounter">
+            <div class="scene-progress">
 
-                        1 / 12
+                <span id="sceneCounter">
+                    1 / 12
+                </span>
 
-                    </span>
+            </div>
 
-                </div>
+            <div class="chapter-header">
 
                 <span id="sceneYear"
                       class="year">
@@ -157,42 +164,96 @@
 
                 </h1>
 
-                <p id="sceneText">
+                <div id="sceneDate"
+                     class="chapter-date">
 
-                    Every beautiful story begins with one unexpected meeting.
+                </div>
 
-                </p>
-
-                <!-- Navigation -->
-
-                <div class="scene-navigation">
-
-                    <button id="prevBtn"
-                            class="secondary-btn">
-
-                        ← Previous
-
-                    </button>
-
-                    <div class="heart">
-
-                        ❤️
-
-                    </div>
-
-                    <button id="nextBtn">
-
-                        Continue →
-
-                    </button>
+                <div id="sceneLocation"
+                     class="chapter-location">
 
                 </div>
 
             </div>
 
+            <blockquote id="sceneQuote"
+                        class="chapter-quote">
+
+            </blockquote>
+
+            <p id="sceneText">
+
+                Every beautiful story begins with one unexpected meeting.
+
+            </p>
+
+            <div id="gallery"
+                 class="gallery">
+
+            </div>
+
+            <div id="finaleMoment"
+                 class="finale-moment hidden"
+                 aria-live="polite">
+
+                <div id="finaleConfetti"
+                     class="finale-confetti"
+                     aria-hidden="true">
+
+                </div>
+
+                <div class="finale-signature">
+
+                    <span class="finale-overline">
+
+                        A Birthday Blessing
+
+                    </span>
+
+                    <h2 class="finale-heading">
+
+                        Happy Birthday, Kitty ❤️
+
+                    </h2>
+
+                    <p class="finale-text">
+
+                        With forever love from Herry and Pranshul
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="scene-navigation">
+
+                <button id="prevBtn"
+                        class="secondary-btn">
+
+                    ← Previous
+
+                </button>
+
+                <div class="heart">
+
+                    ❤️
+
+                </div>
+
+                <button id="nextBtn">
+
+                    Continue →
+
+                </button>
+
+            </div>
+
         </div>
 
-    </section>
+    </div>
+
+</section>
 
     <!-- ==========================================
          Footer
@@ -208,12 +269,20 @@
          Scripts
     =========================================== -->
 
-    <script src="js/scenes.js"></script>
+    <script src="js/chapters.js"></script>
 
-    <script src="js/engine.js"></script>
+    <script src="js/gallery.js"></script>
+    
+    <script src="js/gallery-engine.js"></script>
 
     <script src="js/ui.js"></script>
 
+    <script src="js/engine.js"></script>
+
+    <script src="js/music.js"></script>
+
+    <script src="js/lightbox.js"></script>
+    
     <script src="js/navigation.js"></script>
 
     <script src="js/app.js"></script>

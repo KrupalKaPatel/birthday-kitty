@@ -15,25 +15,7 @@
 
         max-width:850px;
 
-        padding:60px;
-
-    }
-
-    h1{
-
-        font-size:72px;
-
-    }
-
-    h2{
-
-        font-size:48px;
-
-    }
-
-    p{
-
-        font-size:20px;
+        padding:44px;
 
     }
 
@@ -49,6 +31,61 @@
     .glass-card{
 
         max-width:760px;
+
+    }
+
+    #story .scene-wrapper{
+
+        grid-template-columns:minmax(360px,1fr) minmax(480px,1fr);
+
+        gap:24px;
+
+    }
+
+}
+
+@media (max-width:1180px){
+
+    #story{
+
+        height:auto;
+
+        overflow:visible;
+
+        padding:26px 22px 120px;
+
+    }
+
+    #story .scene-wrapper,
+    #story .scene-wrapper.no-hero{
+
+        grid-template-columns:1fr;
+
+        max-width:min(980px,95vw);
+
+        height:auto;
+
+    }
+
+    .scene-card{
+
+        height:auto;
+
+        overflow-y:visible;
+
+        padding-right:0;
+
+    }
+
+    .scene-image{
+
+        position:relative;
+
+        top:auto;
+
+        height:auto;
+
+        max-height:70vh;
 
     }
 
@@ -69,31 +106,13 @@
 
     .glass-card{
 
-        padding:40px;
-
-    }
-
-    h1{
-
-        font-size:52px;
-
-    }
-
-    h2{
-
-        font-size:36px;
-
-    }
-
-    p{
-
-        font-size:17px;
+        padding:30px;
 
     }
 
     .scene-image{
 
-        max-height:45vh;
+        max-height:54vh;
 
     }
 
@@ -116,7 +135,7 @@
 
         width:100%;
 
-        padding:28px;
+        padding:22px;
 
         border-radius:20px;
 
@@ -124,7 +143,7 @@
 
     h1{
 
-        font-size:40px;
+        font-size:clamp(2rem,8vw,2.55rem);
 
         line-height:1.2;
 
@@ -132,13 +151,13 @@
 
     h2{
 
-        font-size:30px;
+        font-size:clamp(1.55rem,5.8vw,2rem);
 
     }
 
     p{
 
-        font-size:16px;
+        font-size:clamp(.98rem,3.7vw,1.05rem);
 
         line-height:1.7;
 
@@ -146,7 +165,7 @@
 
     .small-title{
 
-        font-size:12px;
+        font-size:clamp(.68rem,2.8vw,.76rem);
 
         letter-spacing:2px;
 
@@ -156,7 +175,9 @@
 
         width:100%;
 
-        max-height:35vh;
+        max-height:44vh;
+
+        height:auto;
 
         border-radius:16px;
 
@@ -164,9 +185,15 @@
 
     .scene-navigation{
 
-        flex-direction:column;
+        flex-direction:row;
 
-        gap:18px;
+        gap:10px;
+
+        width:100%;
+
+        bottom:auto;
+
+        padding:10px;
 
     }
 
@@ -176,11 +203,154 @@
 
     }
 
+    .scene-navigation button{
+
+        width:auto;
+
+        flex:1;
+
+        min-width:0;
+
+        padding:12px 14px;
+
+    }
+
     .heart{
 
-        order:-1;
+        order:0;
 
-        font-size:28px;
+        font-size:22px;
+
+    }
+
+    .music-player{
+
+        left:10px;
+
+        right:10px;
+
+        bottom:10px;
+
+        transform:translateX(-50%) scale(.5);
+
+        transform-origin:center bottom;
+
+        width:min(520px,calc(100vw - 26px));
+
+        padding:12px;
+
+    }
+
+    .music-player-track{
+
+        font-size:13px;
+
+    }
+
+    .music-player.is-collapsed{
+
+        width:auto;
+
+        padding:9px 10px;
+
+    }
+
+    .music-controls button{
+
+        width:100%;
+
+    }
+
+    .scene-card.final-chapter #sceneTitle{
+
+        font-size:34px;
+
+    }
+
+    .final-gallery-note{
+
+        padding:24px;
+
+        font-size:16px;
+
+    }
+
+    .chapter-date{
+
+        min-height:32px;
+
+        padding:5px 12px;
+
+        font-size:13px;
+
+    }
+
+    .chapter-quote{
+
+        margin:10px auto 12px;
+
+        padding:12px 14px;
+
+        font-size:16px;
+
+    }
+
+    #sceneTitle,
+    #sceneText,
+    .chapter-header,
+    .chapter-quote,
+    .scene-navigation,
+    .finale-moment{
+
+        max-width:100%;
+
+    }
+
+    .finale-moment{
+
+        padding:14px 12px 16px;
+
+    }
+
+    .finale-overline{
+
+        font-size:10px;
+
+    }
+
+    .finale-text{
+
+        font-size:13px;
+
+    }
+
+    body.has-music-player #footer{
+
+        bottom:154px;
+
+    }
+
+    body.has-music-player.music-player-collapsed #footer{
+
+        bottom:86px;
+
+    }
+
+    body.has-music-player .scene-card{
+
+        padding-bottom:56px;
+
+    }
+
+    body.has-music-player .scene-navigation{
+
+        bottom:auto;
+
+    }
+
+    body.has-music-player.music-player-collapsed .scene-navigation{
+
+        bottom:auto;
 
     }
 
@@ -207,25 +377,7 @@
 
     .glass-card{
 
-        padding:22px;
-
-    }
-
-    h1{
-
-        font-size:32px;
-
-    }
-
-    h2{
-
-        font-size:26px;
-
-    }
-
-    p{
-
-        font-size:15px;
+        padding:18px;
 
     }
 
@@ -280,7 +432,7 @@
 
     .scene-image{
 
-        max-height:35vh;
+        max-height:40vh;
 
     }
 
@@ -292,23 +444,17 @@
 
     h1{
 
-        font-size:30px;
-
         margin-bottom:10px;
 
     }
 
     h2{
 
-        font-size:24px;
-
         margin-bottom:12px;
 
     }
 
     p{
-
-        font-size:14px;
 
         line-height:1.5;
 
@@ -329,27 +475,9 @@
 
 @media (max-width:360px){
 
-    h1{
-
-        font-size:28px;
-
-    }
-
-    h2{
-
-        font-size:22px;
-
-    }
-
-    p{
-
-        font-size:14px;
-
-    }
-
     .glass-card{
 
-        padding:18px;
+        padding:16px;
 
     }
 
