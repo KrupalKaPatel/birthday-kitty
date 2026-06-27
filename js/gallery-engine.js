@@ -74,7 +74,7 @@ function renderGallery(chapterInput){
 
     const photos = GALLERY[chapterId] || [];
 
-    if(chapterId === "happybirthday"){
+    if(chapterId === "happybirthday" || chapterId === "memoryquiz" || chapterId === "heartgame"){
 
         galleryContainer.classList.add("hidden");
 

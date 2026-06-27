@@ -154,6 +154,17 @@ Next Scene
 
 function nextScene(){
 
+    const isLocked =
+
+        typeof window.isNextLocked === "function" &&
+        window.isNextLocked();
+
+    if(isLocked){
+
+        return;
+
+    }
+
     if(Engine.currentScene >= Engine.totalScenes - 1){
 
         Engine.currentScene = 0;
@@ -244,7 +255,12 @@ function updateNavigationButtons(){
 
     prev.disabled = Engine.currentScene === 0;
 
-    next.disabled = false;
+    const isLocked =
+
+        typeof window.isNextLocked === "function" &&
+        window.isNextLocked();
+
+    next.disabled = isLocked;
 
 }
 

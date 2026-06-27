@@ -44,6 +44,30 @@ const memoryQuote = document.getElementById("sceneQuote");
 
 const galleryBlock = document.getElementById("gallery");
 
+const memoryQuiz = document.getElementById("memoryQuiz");
+
+const memoryQuizProgress = document.getElementById("memoryQuizProgress");
+
+const memoryQuizScoreBadge = document.getElementById("memoryQuizScore");
+
+const memoryQuizImage = document.getElementById("memoryQuizImage");
+
+const memoryQuizOptions = document.getElementById("memoryQuizOptions");
+
+const memoryQuizFeedback = document.getElementById("memoryQuizFeedback");
+
+const heartGame = document.getElementById("heartGame");
+
+const heartGameTimer = document.getElementById("heartGameTimer");
+
+const heartGameScore = document.getElementById("heartGameScore");
+
+const heartGameStart = document.getElementById("heartGameStart");
+
+const heartGameArena = document.getElementById("heartGameArena");
+
+const heartGameFeedback = document.getElementById("heartGameFeedback");
+
 const finaleMoment = document.getElementById("finaleMoment");
 
 const finaleConfetti = document.getElementById("finaleConfetti");
@@ -76,15 +100,73 @@ const SCENE_TRANSITION = {
 
 };
 
+const MEMORY_QUIZ = {
+
+    chapterId:"memoryquiz",
+
+    rounds:[
+        {
+            src:"assets/photos/2018/hero.png",
+            options:["2017","2018","2020"],
+            answer:"2018"
+        },
+        {
+            src:"assets/photos/2020/IMG_20200709_173357.jpg",
+            options:["2019","2020","2022"],
+            answer:"2020"
+        },
+        {
+            src:"assets/photos/2023/hero.jpeg",
+            options:["2021","2022","2023"],
+            answer:"2023"
+        }
+    ]
+
+};
+
+const HEART_GAME = {
+
+    chapterId:"heartgame",
+
+    seconds:12,
+
+    spawnMs:420
+
+};
+
 let activeTransitionToken = 0;
 
 let confettiPrepared = false;
 
+let nextLockedByMiniGame = false;
+
+let memoryQuizToken = 0;
+
+let memoryQuizIndex = 0;
+
+let memoryQuizScore = 0;
+
 let sceneTextTypingTimer = null;
+
+let heartGameActiveToken = 0;
+
+let heartGameCountdownInterval = null;
+
+let heartGameSpawnInterval = null;
+
+let heartGameTimeLeft = HEART_GAME.seconds;
+
+let heartGameHits = 0;
 
 const SCENE_TEXT_TYPING = {
 
     charMs:40
+
+};
+
+window.isNextLocked = function(){
+
+    return nextLockedByMiniGame;
 
 };
 
@@ -146,6 +228,10 @@ function applySceneContent(chapter,transitionToken){
 
     updateFinaleMoment(chapter.id);
 
+    updateMemoryQuiz(chapter.id);
+
+    updateHeartGame(chapter.id);
+
     renderHero(chapter);
 
     renderGallery(chapter);
@@ -153,6 +239,500 @@ function applySceneContent(chapter,transitionToken){
     placeSceneNavigationAfterGallery();
 
     resetSceneScrollPosition();
+
+}
+
+function updateHeartGame(chapterId){
+
+    const isHeartGameScene = chapterId === HEART_GAME.chapterId;
+
+    if(!heartGame){
+
+        return;
+
+    }
+
+    heartGame.classList.toggle("hidden",!isHeartGameScene);
+
+    if(!isHeartGameScene){
+
+        stopHeartGame();
+
+        return;
+
+    }
+
+    prepareHeartGame();
+
+}
+
+function prepareHeartGame(){
+
+    stopHeartGame();
+
+    heartGameActiveToken++;
+
+    heartGameTimeLeft = HEART_GAME.seconds;
+
+    heartGameHits = 0;
+
+    nextLockedByMiniGame = true;
+
+    if(heartGameTimer){
+
+        heartGameTimer.textContent = `${HEART_GAME.seconds}s`;
+
+    }
+
+    if(heartGameScore){
+
+        heartGameScore.textContent = "Score 0";
+
+    }
+
+    if(heartGameFeedback){
+
+        heartGameFeedback.textContent = "Tap Start and catch as many hearts as you can.";
+
+    }
+
+    if(heartGameStart){
+
+        heartGameStart.disabled = false;
+
+        heartGameStart.onclick = () => startHeartGameRound(heartGameActiveToken);
+
+    }
+
+    if(nextButton){
+
+        nextButton.disabled = true;
+
+    }
+
+    clearHeartNodes();
+
+}
+
+function startHeartGameRound(token){
+
+    if(token !== heartGameActiveToken){
+
+        return;
+
+    }
+
+    if(heartGameStart){
+
+        heartGameStart.disabled = true;
+
+    }
+
+    if(heartGameFeedback){
+
+        heartGameFeedback.textContent = "Catch them fast, Kitty! 💖";
+
+    }
+
+    heartGameSpawnInterval = setInterval(() => {
+
+        if(token !== heartGameActiveToken){
+
+            stopHeartGame();
+
+            return;
+
+        }
+
+        spawnHeartNode(token);
+
+    },HEART_GAME.spawnMs);
+
+    heartGameCountdownInterval = setInterval(() => {
+
+        if(token !== heartGameActiveToken){
+
+            stopHeartGame();
+
+            return;
+
+        }
+
+        heartGameTimeLeft--;
+
+        if(heartGameTimer){
+
+            heartGameTimer.textContent = `${Math.max(heartGameTimeLeft,0)}s`;
+
+        }
+
+        if(heartGameTimeLeft <= 0){
+
+            finishHeartGame(token);
+
+        }
+
+    },1000);
+
+}
+
+function spawnHeartNode(token){
+
+    if(token !== heartGameActiveToken || !heartGameArena){
+
+        return;
+
+    }
+
+    const heartNode = document.createElement("button");
+
+    heartNode.type = "button";
+
+    heartNode.className = "heart-game-heart";
+
+    heartNode.textContent = "❤";
+
+    const maxX = Math.max(heartGameArena.clientWidth - 36,10);
+
+    const maxY = Math.max(heartGameArena.clientHeight - 36,10);
+
+    heartNode.style.left = `${Math.floor(Math.random() * maxX)}px`;
+
+    heartNode.style.top = `${Math.floor(Math.random() * maxY)}px`;
+
+    heartNode.onclick = () => {
+
+        heartGameHits++;
+
+        if(heartGameScore){
+
+            heartGameScore.textContent = `Score ${heartGameHits}`;
+
+        }
+
+        heartNode.remove();
+
+    };
+
+    heartGameArena.appendChild(heartNode);
+
+    setTimeout(() => {
+
+        if(heartNode.isConnected){
+
+            heartNode.remove();
+
+        }
+
+    },1000);
+
+}
+
+function finishHeartGame(token){
+
+    if(token !== heartGameActiveToken){
+
+        return;
+
+    }
+
+    stopHeartGameIntervals();
+
+    clearHeartNodes();
+
+    const message = heartGameHits >= 12
+        ? `Wow ${heartGameHits} hearts! Love magnet unlocked 💘 Tap Continue.`
+        : `You caught ${heartGameHits} hearts! Tap Continue to move ahead ✨`;
+
+    if(heartGameFeedback){
+
+        heartGameFeedback.textContent = message;
+
+    }
+
+    nextLockedByMiniGame = false;
+
+    if(nextButton){
+
+        nextButton.disabled = false;
+
+        nextButton.textContent = "Continue Journey →";
+
+    }
+
+}
+
+function stopHeartGame(){
+
+    stopHeartGameIntervals();
+
+    clearHeartNodes();
+
+}
+
+function stopHeartGameIntervals(){
+
+    if(heartGameCountdownInterval){
+
+        clearInterval(heartGameCountdownInterval);
+
+        heartGameCountdownInterval = null;
+
+    }
+
+    if(heartGameSpawnInterval){
+
+        clearInterval(heartGameSpawnInterval);
+
+        heartGameSpawnInterval = null;
+
+    }
+
+}
+
+function clearHeartNodes(){
+
+    if(!heartGameArena){
+
+        return;
+
+    }
+
+    heartGameArena.innerHTML = "";
+
+}
+
+function updateMemoryQuiz(chapterId){
+
+    const isMemoryQuizScene = chapterId === MEMORY_QUIZ.chapterId;
+
+    if(!memoryQuiz){
+
+        nextLockedByMiniGame = false;
+
+        return;
+
+    }
+
+    memoryQuiz.classList.toggle("hidden",!isMemoryQuizScene);
+
+    if(!isMemoryQuizScene){
+
+        nextLockedByMiniGame = false;
+
+        memoryQuizToken++;
+
+        return;
+
+    }
+
+    startMemoryQuiz();
+
+}
+
+function startMemoryQuiz(){
+
+    memoryQuizToken++;
+
+    memoryQuizIndex = 0;
+
+    memoryQuizScore = 0;
+
+    nextLockedByMiniGame = true;
+
+    if(memoryQuizScoreBadge){
+
+        memoryQuizScoreBadge.textContent = "Score 0";
+
+    }
+
+    if(nextButton){
+
+        nextButton.disabled = true;
+
+    }
+
+    renderMemoryQuizRound(memoryQuizToken);
+
+}
+
+function renderMemoryQuizRound(token){
+
+    if(token !== memoryQuizToken){
+
+        return;
+
+    }
+
+    const round = MEMORY_QUIZ.rounds[memoryQuizIndex];
+
+    if(!round || !memoryQuizImage || !memoryQuizOptions || !memoryQuizProgress || !memoryQuizFeedback){
+
+        return;
+
+    }
+
+    memoryQuizProgress.textContent = `${memoryQuizIndex + 1} / ${MEMORY_QUIZ.rounds.length}`;
+
+    if(memoryQuizScoreBadge){
+
+        memoryQuizScoreBadge.textContent = `Score ${memoryQuizScore}`;
+
+    }
+
+    memoryQuizImage.src = round.src;
+
+    memoryQuizFeedback.textContent = "Pick the correct year.";
+
+    memoryQuizOptions.innerHTML = "";
+
+    const shuffledOptions = shuffleQuizOptions(round.options);
+
+    shuffledOptions.forEach((yearOption) => {
+
+        const optionButton = document.createElement("button");
+
+        optionButton.type = "button";
+
+        optionButton.className = "memory-quiz-option";
+
+        optionButton.textContent = yearOption;
+
+        optionButton.addEventListener("click",() => {
+
+            handleMemoryQuizAnswer(optionButton,yearOption,round,token);
+
+        });
+
+        memoryQuizOptions.appendChild(optionButton);
+
+    });
+
+}
+
+function handleMemoryQuizAnswer(button,yearOption,round,token){
+
+    if(token !== memoryQuizToken || !memoryQuizOptions || !memoryQuizFeedback){
+
+        return;
+
+    }
+
+    const optionButtons = memoryQuizOptions.querySelectorAll("button");
+
+    optionButtons.forEach((item) => {
+
+        item.disabled = true;
+
+        if(item.textContent === round.answer){
+
+            item.classList.add("correct");
+
+        }
+
+    });
+
+    if(yearOption === round.answer){
+
+        button.classList.add("correct");
+
+        memoryQuizScore++;
+
+        if(memoryQuizScoreBadge){
+
+            memoryQuizScoreBadge.textContent = `Score ${memoryQuizScore}`;
+
+        }
+
+        memoryQuizFeedback.textContent = "Perfect! You got it right ❤️";
+
+    }
+
+    else{
+
+        button.classList.add("wrong");
+
+        memoryQuizFeedback.textContent = `Close! Correct year was ${round.answer}.`;
+
+    }
+
+    const localToken = token;
+
+    setTimeout(() => {
+
+        if(localToken !== memoryQuizToken){
+
+            return;
+
+        }
+
+        memoryQuizIndex++;
+
+        if(memoryQuizIndex >= MEMORY_QUIZ.rounds.length){
+
+            finishMemoryQuiz(localToken);
+
+            return;
+
+        }
+
+        renderMemoryQuizRound(localToken);
+
+    },700);
+
+}
+
+function finishMemoryQuiz(token){
+
+    if(token !== memoryQuizToken || !memoryQuizOptions || !memoryQuizFeedback){
+
+        return;
+
+    }
+
+    memoryQuizOptions.innerHTML = "";
+
+    if(memoryQuizScore === MEMORY_QUIZ.rounds.length){
+
+        memoryQuizFeedback.textContent = `Perfect ${memoryQuizScore}/${MEMORY_QUIZ.rounds.length}! Memory Queen unlocked 👑 Tap Continue ✨`;
+
+    }
+
+    else{
+
+        memoryQuizFeedback.textContent = `Quiz complete: ${memoryQuizScore}/${MEMORY_QUIZ.rounds.length}. Tap Continue to move ahead ✨`;
+
+    }
+
+    nextLockedByMiniGame = false;
+
+    if(nextButton){
+
+        nextButton.disabled = false;
+
+        nextButton.textContent = "Continue Journey →";
+
+    }
+
+}
+
+function shuffleQuizOptions(options){
+
+    const shuffled = options.slice();
+
+    for(let i = shuffled.length - 1; i > 0; i--){
+
+        const j = Math.floor(Math.random() * (i + 1));
+
+        const temp = shuffled[i];
+
+        shuffled[i] = shuffled[j];
+
+        shuffled[j] = temp;
+
+    }
+
+    return shuffled;
 
 }
 
@@ -433,6 +1013,18 @@ function updateOptionalField(element,value){
 }
 
 function getNextButtonText(chapterId){
+
+    if(chapterId === HEART_GAME.chapterId){
+
+        return "Play Heart Game to Continue 💖";
+
+    }
+
+    if(chapterId === MEMORY_QUIZ.chapterId){
+
+        return "Complete Quiz to Continue ✨";
+
+    }
 
     if(chapterId === "birthday2026"){
 

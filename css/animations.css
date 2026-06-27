@@ -885,6 +885,22 @@ button:hover::after{
 
 }
 
+@keyframes heartGameFloat{
+
+    from{
+
+        transform:translateY(0);
+
+    }
+
+    to{
+
+        transform:translateY(-4px);
+
+    }
+
+}
+
 /* ==========================================================
    Performance Modes
 ========================================================== */

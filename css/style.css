@@ -885,6 +885,331 @@ Story Layout Fix
 
 }
 
+.memory-quiz{
+
+    max-width:var(--reading-width);
+
+    margin:6px auto 8px;
+
+    padding:12px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(216,180,254,.45);
+
+    background:linear-gradient(145deg,rgba(29,16,60,.5),rgba(15,9,31,.35));
+
+}
+
+.memory-quiz-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-bottom:8px;
+
+}
+
+.memory-quiz-meta{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.memory-quiz-score{
+
+    display:inline-flex;
+
+    padding:3px 9px;
+
+    border-radius:999px;
+
+    background:rgba(251,191,36,.18);
+
+    border:1px solid rgba(253,224,71,.45);
+
+    color:#FEF9C3;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+#memoryQuizTitle{
+
+    margin:0;
+
+    font-family:var(--font-display);
+
+    font-size:clamp(1.1rem,1.5vw,1.4rem);
+
+    color:#F5D0FE;
+
+}
+
+.memory-quiz-progress{
+
+    display:inline-flex;
+
+    padding:3px 9px;
+
+    border-radius:999px;
+
+    background:rgba(192,132,252,.2);
+
+    border:1px solid rgba(216,180,254,.45);
+
+    color:#F3E8FF;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+.memory-quiz-image{
+
+    width:100%;
+
+    max-height:260px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+    border:1px solid rgba(255,255,255,.16);
+
+}
+
+.memory-quiz-options{
+
+    margin-top:10px;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+
+    gap:8px;
+
+}
+
+.memory-quiz-option{
+
+    min-height:38px;
+
+    border-radius:10px;
+
+    border:1px solid rgba(216,180,254,.42);
+
+    background:rgba(167,139,250,.14);
+
+    color:#FAF5FF;
+
+    font-weight:600;
+
+}
+
+.memory-quiz-option:hover{
+
+    transform:none;
+
+    background:rgba(192,132,252,.3);
+
+}
+
+.memory-quiz-option.correct{
+
+    border-color:#86EFAC;
+
+    background:rgba(34,197,94,.25);
+
+}
+
+.memory-quiz-option.wrong{
+
+    border-color:#FCA5A5;
+
+    background:rgba(239,68,68,.22);
+
+}
+
+.memory-quiz-feedback{
+
+    margin-top:8px;
+
+    margin-bottom:0;
+
+    color:#E9D5FF;
+
+    font-size:13px;
+
+}
+
+.heart-game{
+
+    max-width:var(--reading-width);
+
+    margin:6px auto 8px;
+
+    padding:12px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(244,114,182,.36);
+
+    background:linear-gradient(145deg,rgba(62,21,64,.42),rgba(27,11,33,.34));
+
+}
+
+.heart-game-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-bottom:8px;
+
+}
+
+#heartGameTitle{
+
+    margin:0;
+
+    font-family:var(--font-display);
+
+    font-size:clamp(1.1rem,1.5vw,1.4rem);
+
+    color:#FBCFE8;
+
+}
+
+.heart-game-meta{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.heart-game-timer,
+.heart-game-score{
+
+    display:inline-flex;
+
+    padding:3px 9px;
+
+    border-radius:999px;
+
+    border:1px solid rgba(251,113,133,.45);
+
+    background:rgba(244,114,182,.16);
+
+    color:#FCE7F3;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+.heart-game-start{
+
+    min-height:38px;
+
+    border-radius:10px;
+
+    border:1px solid rgba(251,113,133,.45);
+
+    background:rgba(244,114,182,.2);
+
+    color:#FFE4F1;
+
+    font-weight:700;
+
+}
+
+.heart-game-start:hover{
+
+    transform:none;
+
+    background:rgba(244,114,182,.35);
+
+}
+
+.heart-game-arena{
+
+    position:relative;
+
+    margin-top:10px;
+
+    height:220px;
+
+    border-radius:12px;
+
+    border:1px dashed rgba(251,113,133,.4);
+
+    background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.1),rgba(255,255,255,0) 45%),linear-gradient(160deg,rgba(76,22,72,.35),rgba(29,9,31,.45));
+
+    overflow:hidden;
+
+}
+
+.heart-game-heart{
+
+    position:absolute;
+
+    border:0;
+
+    background:transparent;
+
+    color:#F472B6;
+
+    font-size:26px;
+
+    line-height:1;
+
+    cursor:pointer;
+
+    text-shadow:0 3px 10px rgba(0,0,0,.25);
+
+    animation:heartGameFloat .8s ease-in-out infinite alternate;
+
+}
+
+.heart-game-heart:hover{
+
+    transform:scale(1.1);
+
+}
+
+.heart-game-feedback{
+
+    margin-top:8px;
+
+    margin-bottom:0;
+
+    color:#F5D0FE;
+
+    font-size:13px;
+
+}
+
 body.has-music-player .scene-card{
 
     padding-bottom:10px;

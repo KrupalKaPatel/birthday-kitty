@@ -195,6 +195,53 @@ const CHAPTERS = [
     },
 
     {
+        id: "memoryquiz",
+
+        year: "Mini Game",
+
+        date: "Before we continue...",
+
+        title: "Guess The Year 💫",
+
+        location: "A quick memory challenge",
+
+        hero: "",
+
+        gallery: [],
+
+        quote:
+            "Let's see how perfectly you remember our journey.",
+
+        story:
+            `Tiny challenge time, Kitty.
+            Guess the correct year for each memory photo.
+            Finish all 3 rounds to unlock the next chapter.`
+    },
+
+    {
+        id: "heartgame",
+
+        year: "Mini Game",
+
+        date: "One more little break",
+
+        title: "Catch The Hearts 💖",
+
+        location: "Tap challenge",
+
+        hero: "",
+
+        gallery: [],
+
+        quote:
+            "Catch love before it floats away.",
+
+        story:
+            `Tap Start, catch as many hearts as you can in 12 seconds,
+            and then we'll continue our journey.`
+    },
+
+    {
         id: "birthday2022",
 
         year: "2022",
